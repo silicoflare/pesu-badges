@@ -15,7 +15,7 @@ def read_root():
 
 @app.get("/api/{file_name}")
 def get_svg(file_name: str = Path(..., title="The name of your SVG file")):
-    file_path = f"static/{file_name}.svg"
+    file_path = f"./api/static/{file_name}.svg"
     return FileResponse(file_path, media_type="image/svg+xml")
 
 def generate_custom_font_badge(version):
