@@ -3,8 +3,23 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from svgwrite import Drawing
 import datetime
+import os
+import re
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Allow all origins
+origins = ["*"]
+
+# Add middleware for handling CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # You can specify the HTTP methods that are allowed
+    allow_headers=["*"],  # You can specify the HTTP headers that are allowed
+)
 
 # Mounting the subfolder as a static directory
 app.mount("/static", StaticFiles(directory="./api/static"), name="static")
@@ -58,3 +73,11 @@ async def get_version_badge(text:str):
     
     # Return the SVG file as a response
     return FileResponse(file_path, media_type="image/svg+xml")
+
+@app.get("/badges")
+def list_files():
+    try:
+        files = os.listdir('./api/static/')
+        return {"files": [re.match(r'([a-zA-Z\-_]+).svg', file)[1] for file in files]}
+    except FileNotFoundError:
+        return {"error": "Directory not found"}
