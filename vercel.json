@@ -1,6 +1,5 @@
 {
     "name": "pesu-badges",
-    "version": 1,
     "builds": [
         {
             "src": "/frontend/**",
