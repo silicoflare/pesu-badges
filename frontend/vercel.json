@@ -1,0 +1,5 @@
+{
+    "rewrites": [{ "source": "/api/(.*)", "destination": "https://pesu-links-api.vercel.app/$1" }],
+    "version": 2
+  }
+  
