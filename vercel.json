@@ -1,7 +1,6 @@
 {
     "name": "pesu-badges",
     "version": 1,
-    "type": "project",
     "frameworks": {
         "frontend": {
             "vite": {
