@@ -1,11 +1,10 @@
 {
-    "name": "pesu-badges",
     "builds": [
         {
-            "src": "/frontend/**",
+            "src": "/frontend/",
             "use": "@vercel/static-build"
         }, {
-            "src": "/backend/**",
+            "src": "/backend/",
             "use": "@vercel/python"
         }
     ],
