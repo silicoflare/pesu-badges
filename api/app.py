@@ -7,7 +7,7 @@ import datetime
 app = FastAPI()
 
 # Mounting the subfolder as a static directory
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="./api/static"), name="static")
 
 @app.get("/")
 def read_root():
