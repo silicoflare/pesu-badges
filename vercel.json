@@ -1,0 +1,38 @@
+{
+    "name": "pesu-badges",
+    "version": 1,
+    "type": "project",
+    "frameworks": {
+        "frontend": {
+            "vite": {
+                "root": "frontend",
+                "buildCommand": "npm run build",
+                "outputDirectory": "/public"
+            }
+        },
+        "backend": {
+            "fastapi": {
+                "root": "backend",
+                "entryPoint": "app:app"
+            }
+        }
+    },
+    "builds": [
+        {
+            "src": "/frontend/**",
+            "use": "@vercel/static-build"
+        }, {
+            "src": "/backend/**",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/backend/$1"
+        }, {
+            "src": "/(.*)",
+            "dest": "/frontend/$1"
+        }
+    ]
+}
