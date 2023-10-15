@@ -6,7 +6,7 @@
             Badges of PESU and its clubs to flex on your GitHub README!!
         </p>
         <br><br>
-        <div class="grid grid-cols-4 gap-5 text-center justify-center">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-5 text-center justify-center">
             <Badge v-for="f in data" :name="f" />
         </div>
     </div>
