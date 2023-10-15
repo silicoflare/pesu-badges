@@ -26,7 +26,7 @@
             Badge
         },
         mounted() {
-            const apiUrl = 'http://pesu-badges.vercel.app/api/badges';
+            const apiUrl = 'https://pesu-badges-api.vercel.app/badgelist';
 
             axios.get(apiUrl)
             .then(response => {
