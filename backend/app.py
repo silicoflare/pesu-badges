@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Path, Response
-from fastapi.responses import FileResponse, RedirectResponse
+from fastapi.responses import FileResponse, RedirectResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from svgwrite import Drawing
 import datetime
@@ -41,3 +41,10 @@ def get_svg(file_name: str = Path(..., title="The name of your SVG file")):
     file_path = f"./static/{file_name}.svg"
     return FileResponse(file_path, media_type="image/svg+xml")
 
+@app.get('/badgepics', response_class=HTMLResponse)
+def get_badge_pics():
+    para = '<p align="center">\n'
+    for f in list_files()['files']:
+        para += f"<img src='https://pesu-badges-api.vercel.app/badge/{f}' width='98px' height='30px' />\n"
+    para += '</p>'
+    return para
