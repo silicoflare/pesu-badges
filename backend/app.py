@@ -32,7 +32,7 @@ def index():
 @app.get("/badgelist")
 def list_files():
     try:
-        files = os.listdir('./backend/static/')
+        files = os.listdir('./static/')
         return {"files": [re.match(r'([a-zA-Z\-_]+).svg', file)[1] for file in files]}
     except FileNotFoundError:
         return {"error": "Directory not found"}
